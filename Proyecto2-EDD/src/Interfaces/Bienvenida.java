@@ -15,6 +15,8 @@ public class Bienvenida extends javax.swing.JFrame {
      */
     public Bienvenida() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -26,21 +28,42 @@ public class Bienvenida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        botonSig = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        botonSig.setText("Siguiente");
+        botonSig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSigActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonSig, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 100, 50));
+
+        Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(51, 51, 255));
+        Titulo.setText("Bienvenido");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonSigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSigActionPerformed
+        this.setVisible(false);
+
+
+        Menu menu = new Menu();
+
+        menu.setVisible(true);
+
+    }//GEN-LAST:event_botonSigActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +101,8 @@ public class Bienvenida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton botonSig;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

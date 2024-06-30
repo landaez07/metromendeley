@@ -10,11 +10,16 @@ package Interfaces;
  */
 public class Analizar extends javax.swing.JFrame {
 
+        public static Menu v1;
     /**
      * Creates new form Analizar
      */
-    public Analizar() {
+    public Analizar(Menu v1) {
         initComponents();
+        this.v1 = v1;
+        v1.setVisible(false);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -26,21 +31,44 @@ public class Analizar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        botonAtras = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonAtras.setText("Atras");
+        botonAtras.setActionCommand("Atrás");
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        this.setVisible(false);
+
+        Menu menu = new Menu();
+
+        menu.setVisible(true);
+    }//GEN-LAST:event_botonAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +100,13 @@ public class Analizar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Analizar().setVisible(true);
+                new Analizar(v1).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAtras;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
