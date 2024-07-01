@@ -57,5 +57,25 @@ public class HashTable {
     }
     
     
-    
+    public boolean comprobacion( String titulo ){
+        int indice = this.hash(titulo);
+        if (this.resumenes[indice].getTitulo().equals(titulo)){
+            return true;
+        } else {
+            indice +=1;
+            int contador = 0;
+            while (this.resumenes[indice].getTitulo().equals(titulo) && contador != this.tamano){
+                indice += 1;
+                contador += 1;
+                if (indice == tamano){
+                    indice = 0;
+                }
+            }
+            if (contador == this.tamano){
+                return false;
+            }
+            return true;
+            
+        }
+    }
 }
