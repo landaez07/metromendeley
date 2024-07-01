@@ -31,7 +31,10 @@ public class HashTable {
     
     public void insertar(Resumenes resumen){
         int indice = this.hash(resumen.getTitulo());
-        
+        if (this.comprobacion(resumen.titulo) != null){
+            System.out.println("El resumen ya se encoentra en el sistema");
+            return;
+        }
         if (this.tamano == this.agregados){
             Resumenes[] nuevo = new Resumenes[this.tamano + 1];
             for (int i = 0; i < this.tamano; i++) {
@@ -57,10 +60,13 @@ public class HashTable {
     }
     
     
-    public boolean comprobacion( String titulo ){
+    public Resumenes comprobacion( String titulo ){
         int indice = this.hash(titulo);
+        if( this.resumenes[indice] == null){
+            return null;
+        }
         if (this.resumenes[indice].getTitulo().equals(titulo)){
-            return true;
+            return this.resumenes[indice];
         } else {
             indice +=1;
             int contador = 0;
@@ -72,10 +78,37 @@ public class HashTable {
                 }
             }
             if (contador == this.tamano){
-                return false;
+                return null;
             }
-            return true;
+            return this.resumenes[indice];
             
         }
+    }
+    
+    
+    public void analizar (Resumenes resumen){
+        String titulo = resumen.titulo;
+        String Autor = resumen.autores;
+        String cuerpo = resumen.getCuerpo();
+        String respuesta = titulo + "\n" + Autor + "\n";
+        String[] palabras = resumen.getClaves().split(",");
+        for (int i = 0; i < palabras.length; i++) {
+            int aux = 0;
+            int contador = 0;
+            for (int j = 0; j < resumen.getCuerpo().length(); j++) {
+                if(!String.valueOf(cuerpo.charAt(j)).equals(String.valueOf(palabras[i].charAt(aux)))){
+                    aux = 0;
+                }
+                if(String.valueOf(cuerpo.charAt(j)).equals(String.valueOf(palabras[i].charAt(aux)))){
+                    aux += 1;
+                }
+                if (aux == palabras[i].length()){
+                    contador ++;
+                    aux = 0;
+                }  
+            }
+            System.out.println(palabras[i] + ": " + contador + " veces.\n");
+        }
+        
     }
 }
