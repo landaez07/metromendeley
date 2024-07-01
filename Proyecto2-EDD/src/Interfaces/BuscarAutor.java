@@ -71,8 +71,9 @@ public class BuscarAutor extends javax.swing.JFrame {
         });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 160, 230, 40));
 
+        botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonBuscar.setText("Buscar");
-        jPanel1.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 90, 40));
+        jPanel1.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

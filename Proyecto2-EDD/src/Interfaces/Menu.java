@@ -45,6 +45,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        botonBuscarAutor.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonBuscarAutor.setText("Buscar");
         botonBuscarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,6 +54,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(botonBuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, 40));
 
+        botonAnalizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonAnalizar.setText("Analizar");
         botonAnalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +63,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 100, 40));
 
+        botonBuscarPalabraClave.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonBuscarPalabraClave.setText("Buscar");
         botonBuscarPalabraClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +72,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(botonBuscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 100, 40));
 
+        botonAgregar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonAgregar.setText("Agregar");
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +84,7 @@ public class Menu extends javax.swing.JFrame {
         Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
         Titulo.setForeground(new java.awt.Color(51, 51, 255));
         Titulo.setText("Menú");
-        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
 
         Titulo2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         Titulo2.setForeground(new java.awt.Color(51, 51, 255));
@@ -102,6 +106,7 @@ public class Menu extends javax.swing.JFrame {
         Titulo5.setText("Buscar por palabra clave:");
         jPanel1.add(Titulo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
 
+        botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
