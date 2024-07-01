@@ -34,13 +34,14 @@ public class Cargar extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonAtras = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        botonAtras.setText("Atras");
+        botonAtras.setText("Atrás");
         botonAtras.setActionCommand("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +49,11 @@ public class Cargar extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 90, 40));
+
+        Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(51, 51, 255));
+        Titulo.setText("Agregar resúmen:");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,6 +117,7 @@ public class Cargar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Titulo;
     private javax.swing.JButton botonAtras;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

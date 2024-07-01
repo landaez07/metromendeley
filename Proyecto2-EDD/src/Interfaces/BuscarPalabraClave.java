@@ -34,13 +34,19 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonAtras = new javax.swing.JButton();
+        palabra = new javax.swing.JTextField();
+        Titulo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        botonBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        botonAtras.setText("Atras");
+        botonAtras.setText("Atrás");
         botonAtras.setActionCommand("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +54,27 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 90, 40));
+        jPanel1.add(palabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 260, 30));
+
+        Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(51, 51, 255));
+        Titulo.setText("Buscar por palabra clave:");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel5.setText("Introduzca una palabra clave:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 260, 30));
+
+        botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonBuscar.setText("Buscar");
+        jPanel1.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 90, 40));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 310, 230));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +138,13 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Titulo;
     private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonBuscar;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField palabra;
     // End of variables declaration//GEN-END:variables
 }

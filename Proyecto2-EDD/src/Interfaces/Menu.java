@@ -33,12 +33,13 @@ public class Menu extends javax.swing.JFrame {
         botonBuscarAutor = new javax.swing.JButton();
         botonAnalizar = new javax.swing.JButton();
         botonBuscarPalabraClave = new javax.swing.JButton();
-        botonCargar = new javax.swing.JButton();
+        botonAgregar = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         Titulo2 = new javax.swing.JLabel();
         Titulo3 = new javax.swing.JLabel();
         Titulo4 = new javax.swing.JLabel();
         Titulo5 = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +51,7 @@ public class Menu extends javax.swing.JFrame {
                 botonBuscarAutorActionPerformed(evt);
             }
         });
-        jPanel1.add(botonBuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 100, 40));
+        jPanel1.add(botonBuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, 40));
 
         botonAnalizar.setText("Analizar");
         botonAnalizar.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +59,7 @@ public class Menu extends javax.swing.JFrame {
                 botonAnalizarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 100, 40));
+        jPanel1.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 100, 40));
 
         botonBuscarPalabraClave.setText("Buscar");
         botonBuscarPalabraClave.addActionListener(new java.awt.event.ActionListener() {
@@ -66,15 +67,15 @@ public class Menu extends javax.swing.JFrame {
                 botonBuscarPalabraClaveActionPerformed(evt);
             }
         });
-        jPanel1.add(botonBuscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 100, 40));
+        jPanel1.add(botonBuscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 100, 40));
 
-        botonCargar.setText("Cargar");
-        botonCargar.addActionListener(new java.awt.event.ActionListener() {
+        botonAgregar.setText("Agregar");
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCargarActionPerformed(evt);
+                botonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 100, 40));
+        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 100, 40));
 
         Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
         Titulo.setForeground(new java.awt.Color(51, 51, 255));
@@ -83,23 +84,31 @@ public class Menu extends javax.swing.JFrame {
 
         Titulo2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         Titulo2.setForeground(new java.awt.Color(51, 51, 255));
-        Titulo2.setText("Cargar Archivo:");
+        Titulo2.setText("Agregar resúmen:");
         jPanel1.add(Titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
 
         Titulo3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         Titulo3.setForeground(new java.awt.Color(51, 51, 255));
-        Titulo3.setText("Buscar Autor:");
+        Titulo3.setText("Buscar por autor:");
         jPanel1.add(Titulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
         Titulo4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         Titulo4.setForeground(new java.awt.Color(51, 51, 255));
-        Titulo4.setText("Analizar:");
+        Titulo4.setText("Analizar resúmen:");
         jPanel1.add(Titulo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
         Titulo5.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         Titulo5.setForeground(new java.awt.Color(51, 51, 255));
-        Titulo5.setText("Buscar Palabra Clave:");
+        Titulo5.setText("Buscar por palabra clave:");
         jPanel1.add(Titulo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
+
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,7 +144,7 @@ public class Menu extends javax.swing.JFrame {
         buscar.setVisible(true);
     }//GEN-LAST:event_botonBuscarPalabraClaveActionPerformed
 
-    private void botonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarActionPerformed
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         this.setVisible(false);
 
         Menu menu = new Menu();
@@ -143,7 +152,7 @@ public class Menu extends javax.swing.JFrame {
         Cargar cargar = new Cargar(menu);
 
         cargar.setVisible(true);
-    }//GEN-LAST:event_botonCargarActionPerformed
+    }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnalizarActionPerformed
         this.setVisible(false);
@@ -154,6 +163,10 @@ public class Menu extends javax.swing.JFrame {
 
         analizar.setVisible(true);
     }//GEN-LAST:event_botonAnalizarActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,10 +209,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo3;
     private javax.swing.JLabel Titulo4;
     private javax.swing.JLabel Titulo5;
+    private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAnalizar;
     private javax.swing.JButton botonBuscarAutor;
     private javax.swing.JButton botonBuscarPalabraClave;
-    private javax.swing.JButton botonCargar;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
