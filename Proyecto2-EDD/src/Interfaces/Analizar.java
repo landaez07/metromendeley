@@ -37,9 +37,10 @@ public class Analizar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        botonSeleccionar = new javax.swing.JButton();
-        investigaciones = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        botonAnalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,7 +48,6 @@ public class Analizar extends javax.swing.JFrame {
 
         botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonAtras.setText("Atrás");
-        botonAtras.setActionCommand("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAtrasActionPerformed(evt);
@@ -64,33 +64,31 @@ public class Analizar extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 290, 150));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 340, 280));
 
         jLabel4.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 204));
         jLabel4.setText("Análisis:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 80, 30));
-
-        botonSeleccionar.setText("Seleccionar");
-        botonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSeleccionarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 110, 40));
-
-        investigaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        investigaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                investigacionesActionPerformed(evt);
-            }
-        });
-        jPanel2.add(investigaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 230, 40));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 80, 30));
 
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 204));
         jLabel5.setText("Investigaciones guardadas:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 230, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 230, 30));
+
+        jList1.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 230, 130));
+
+        botonAnalizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonAnalizar.setText("Analizar");
+        jPanel2.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,14 +111,6 @@ public class Analizar extends javax.swing.JFrame {
 
         menu.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
-
-    private void botonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonSeleccionarActionPerformed
-
-    private void investigacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_investigacionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_investigacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,13 +149,14 @@ public class Analizar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
+    private javax.swing.JButton botonAnalizar;
     private javax.swing.JButton botonAtras;
-    private javax.swing.JButton botonSeleccionar;
-    private javax.swing.JComboBox<String> investigaciones;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
