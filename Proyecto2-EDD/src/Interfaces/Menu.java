@@ -4,12 +4,16 @@
  */
 package Interfaces;
 
+import EDD.Hash1;
+import EDD.HashTable;
+
 /**
  *
  * @author Chris
  */
 public class Menu extends javax.swing.JFrame {
-
+    HashTable hashtable;
+    Hash1 hash;
     /**
      * Creates new form Menu
      */

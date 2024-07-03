@@ -14,6 +14,7 @@ public class HashTable {
     int agregados;
     public HashTable(int tamano){
         this.tamano = tamano;
+        this.resumenes = new Resumenes[this.tamano];
         for (int i = 0; i < tamano; i++) {
             this.resumenes[i] = null;
         }
@@ -111,4 +112,17 @@ public class HashTable {
         }
         
     }
+    
+    
+    public String busqueda_autores( String autor){
+        Lista lis1 = new Lista();
+        for (int i = 0; i < this.tamano; i++) {
+            if (this.resumenes[i].getAutores().contains(autor)){
+                lis1.insertar(this.resumenes[i]);
+            }
+        }
+        return lis1.imprimir();
+        
+    }
+    
 }

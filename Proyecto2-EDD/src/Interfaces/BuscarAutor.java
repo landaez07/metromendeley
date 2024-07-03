@@ -131,6 +131,8 @@ public class BuscarAutor extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        v1.hashtable.busqueda_autores(this.jComboBox1.getSelectedItem().toString());
+        this.jList1.add("");
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
