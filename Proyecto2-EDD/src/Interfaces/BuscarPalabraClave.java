@@ -4,6 +4,9 @@
  */
 package Interfaces;
 
+import EDD.Lista;
+import EDD.Resumenes;
+
 /**
  *
  * @author Chris
@@ -40,11 +43,10 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         botonBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jLabel6 = new javax.swing.JLabel();
         botonSeleccionar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +74,11 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
 
         botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 90, 40));
 
         jTextArea1.setColumns(20);
@@ -80,16 +87,6 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 370, 350));
 
-        jList1.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 270, 130));
-
         jLabel6.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 204));
         jLabel6.setText("Introduzca una palabra clave:");
@@ -97,12 +94,26 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
 
         botonSeleccionar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonSeleccionar.setText("Seleccionar");
+        botonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSeleccionarActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 130, 40));
 
         jLabel7.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 204));
         jLabel7.setText("Investigaciones relacionadas:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 260, 30));
+
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 270, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,6 +136,29 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
 
         menu.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        // TODO add your handling code here:
+        String palabra = this.palabra.getText();
+        Lista lista = this.v1.hash.comprobacion(palabra);
+        String[] titulos = lista.imprimir().split("\n");
+        for (int i = 0; i < titulos.length; i++) {
+            try{
+                this.jComboBox2.addItem(titulos[i]);
+            }catch(Exception e){
+                
+            }
+        }
+    }//GEN-LAST:event_botonBuscarActionPerformed
+
+    private void botonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarActionPerformed
+        // TODO add your handling code here:
+        this.jTextArea1.setText(this.v1.hashtable.analizar(this.jComboBox2.getSelectedItem().toString()));
+    }//GEN-LAST:event_botonSeleccionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,13 +200,12 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
     private javax.swing.JButton botonAtras;
     private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonSeleccionar;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField palabra;
     // End of variables declaration//GEN-END:variables

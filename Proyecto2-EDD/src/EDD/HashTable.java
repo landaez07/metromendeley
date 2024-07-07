@@ -9,9 +9,9 @@ package EDD;
  * @author Chris
  */
 public class HashTable {
-    Resumenes[] resumenes;
-    int tamano;
-    int agregados;
+    public Resumenes[] resumenes;
+    public int tamano;
+    public int agregados;
     public HashTable(int tamano){
         this.tamano = tamano;
         this.resumenes = new Resumenes[this.tamano];
@@ -85,10 +85,24 @@ public class HashTable {
             
         }
     }
+    public Resumenes buscar(String titulo){
+        int indice = this.hash(titulo);
+        if(this.resumenes[indice].titulo.equals(titulo)){
+            return this.resumenes[indice];
+        }else{
+            indice += 1;
+            while(!this.resumenes[indice].titulo.equals(titulo)){
+                indice += 1;
+                if (indice == tamano){
+                    indice = 0;
+                }
+            }
+            return this.resumenes[indice];
+        }
+    }
     
-    
-    public void analizar (Resumenes resumen){
-        String titulo = resumen.titulo;
+    public String analizar (String titulo){
+        Resumenes resumen = this.buscar(titulo);
         String Autor = resumen.autores;
         String cuerpo = resumen.getCuerpo();
         String respuesta = titulo + "\n" + Autor + "\n";
@@ -108,8 +122,9 @@ public class HashTable {
                     aux = 0;
                 }  
             }
-            System.out.println(palabras[i] + ": " + contador + " veces.\n");
+            respuesta +=(palabras[i] + ": " + contador + " veces.\n");
         }
+        return respuesta;
         
     }
     

@@ -38,12 +38,11 @@ public class BuscarAutor extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         botonSeleccionar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,21 +74,16 @@ public class BuscarAutor extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 270, 40));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 270, 40));
 
         botonSeleccionar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonSeleccionar.setText("Seleccionar");
-        jPanel1.add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 120, 40));
-
-        jList1.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        botonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSeleccionarActionPerformed(evt);
+            }
         });
-        jScrollPane2.setViewportView(jList1);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 270, 130));
+        jPanel1.add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 120, 40));
 
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 204));
@@ -106,6 +100,15 @@ public class BuscarAutor extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 51, 204));
         jLabel6.setText("Detalles:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 80, 30));
+
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 270, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,9 +134,25 @@ public class BuscarAutor extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        v1.hashtable.busqueda_autores(this.jComboBox1.getSelectedItem().toString());
-        this.jList1.add("");
+        String[] autores = v1.hashtable.busqueda_autores(this.jComboBox1.getSelectedItem().toString()).split("\n");
+        for (int i = 0; i < autores.length; i++) {
+            try{
+                this.jComboBox2.addItem(autores[i]);
+            }catch(Exception e){
+                
+            }
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void botonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarActionPerformed
+        // TODO add your handling code here:
+        String titulo = this.jComboBox2.getSelectedItem().toString();
+        this.jTextArea1.setText(this.v1.hashtable.analizar(titulo));
+    }//GEN-LAST:event_botonSeleccionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,13 +194,12 @@ public class BuscarAutor extends javax.swing.JFrame {
     private javax.swing.JButton botonAtras;
     private javax.swing.JButton botonSeleccionar;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

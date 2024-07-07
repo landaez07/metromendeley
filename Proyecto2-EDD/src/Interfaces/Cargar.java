@@ -4,14 +4,22 @@
  */
 package Interfaces;
 
+import EDD.Resumenes;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author Chris
  */
 public class Cargar extends javax.swing.JFrame {
 
-            public static Menu v1;
-    
+    public static Menu v1;
+
     /**
      * Creates new form Cargar
      */
@@ -35,6 +43,7 @@ public class Cargar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         botonAtras = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +51,6 @@ public class Cargar extends javax.swing.JFrame {
 
         botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonAtras.setText("Atrás");
-        botonAtras.setActionCommand("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAtrasActionPerformed(evt);
@@ -54,6 +62,14 @@ public class Cargar extends javax.swing.JFrame {
         Titulo.setForeground(new java.awt.Color(51, 51, 255));
         Titulo.setText("Agregar resúmen:");
         jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
+
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,6 +96,62 @@ public class Cargar extends javax.swing.JFrame {
 
         menu.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto", "txt");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        File ruta = new File("e:/carpeta/");
+        fileChooser.setCurrentDirectory(ruta);
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            String dir = String.valueOf(file).replace("\\", "//");
+//            arch = dir;
+            String linea;
+            String datos_txt = "";
+            String path = dir;
+            String titulo = "";
+            String autores = "";
+            String resumen = "";
+            String palabras = "";
+            int estado = 1;
+            try {
+                if (!file.exists()) {
+                    file.createNewFile();
+                } else {
+                    FileReader fr = new FileReader(file);
+                    BufferedReader br = new BufferedReader(fr);
+                    while ((linea = br.readLine()) != null) {
+                        if (!linea.isEmpty()) {
+                            if (linea.equals("Autores")) {
+                                estado = 2;
+                            } else if (linea.equals("Resumen")) {
+                                estado = 3;
+                            } else if (linea.toLowerCase().contains("palabras clave:")) {
+                                palabras += linea.toLowerCase().replace("palabras clave:", "");
+                            } else if (estado == 1) {
+                                titulo += linea;
+                            } else if (estado == 2) {
+                                autores += linea + "\n";
+                            } else if (estado == 3) {
+                                resumen += linea + " ";
+                            }
+                        }
+                    }
+                    Resumenes art = new Resumenes(titulo, autores, resumen, palabras);
+                    this.v1.hashtable.insertar(art);
+
+                    this.v1.hash.insertar(art);
+                    br.close();
+                    JOptionPane.showMessageDialog(null, "Se ha leido el archivo");
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,6 +191,7 @@ public class Cargar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton botonAtras;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

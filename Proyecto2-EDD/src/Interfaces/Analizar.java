@@ -4,13 +4,17 @@
  */
 package Interfaces;
 
+import EDD.HashTable;
+import java.awt.List;
+import javax.swing.ListModel;
+
 /**
  *
  * @author Chris
  */
 public class Analizar extends javax.swing.JFrame {
 
-        public static Menu v1;
+    public static Menu v1;
     /**
      * Creates new form Analizar
      */
@@ -20,6 +24,14 @@ public class Analizar extends javax.swing.JFrame {
         v1.setVisible(false);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        HashTable hash = v1.hashtable;
+        for (int i = 0; i < hash.tamano; i++) {
+            try{
+                this.jComboBox1.addItem(hash.resumenes[i].titulo);
+            }catch(Exception e){
+                
+            }
+        }
     }
 
     /**
@@ -38,9 +50,8 @@ public class Analizar extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         botonAnalizar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,19 +87,17 @@ public class Analizar extends javax.swing.JFrame {
         jLabel5.setText("Investigaciones guardadas:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 230, 30));
 
-        jList1.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 230, 130));
-
         botonAnalizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonAnalizar.setText("Analizar");
-        jPanel2.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 100, 30));
+        botonAnalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAnalizarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 100, 30));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 220, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,6 +120,17 @@ public class Analizar extends javax.swing.JFrame {
 
         menu.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnalizarActionPerformed
+        // TODO add your handling code here:
+        HashTable hash = v1.hashtable;
+        String titulo = this.jComboBox1.getSelectedItem().toString();
+        try{
+            this.jTextArea1.setText(hash.analizar(titulo));
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_botonAnalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,12 +171,11 @@ public class Analizar extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton botonAnalizar;
     private javax.swing.JButton botonAtras;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
