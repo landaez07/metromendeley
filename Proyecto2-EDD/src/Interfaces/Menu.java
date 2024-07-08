@@ -4,17 +4,24 @@
  */
 package Interfaces;
 
+import EDD.Hash1;
+import EDD.HashTable;
+
 /**
  *
  * @author Chris
  */
 public class Menu extends javax.swing.JFrame {
-
+    HashTable hashtable;
+    Hash1 hash;
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        this.setVisible(false);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -26,21 +33,125 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        botonBuscarAutor = new javax.swing.JButton();
+        botonAnalizar = new javax.swing.JButton();
+        botonBuscarPalabraClave = new javax.swing.JButton();
+        botonAgregar = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        botonBuscarAutor.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonBuscarAutor.setText("Buscar por autor");
+        botonBuscarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarAutorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonBuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 270, 50));
+
+        botonAnalizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonAnalizar.setText("Analizar resúmen");
+        botonAnalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAnalizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 270, 50));
+
+        botonBuscarPalabraClave.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonBuscarPalabraClave.setText("Buscar por palabra clave");
+        botonBuscarPalabraClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarPalabraClaveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonBuscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 270, 50));
+
+        botonAgregar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonAgregar.setText("Agregar resúmen");
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 270, 50));
+
+        Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(51, 51, 255));
+        Titulo.setText("Menú");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+
+        botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonBuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarAutorActionPerformed
+        this.setVisible(false);
+
+        Menu menu = new Menu();
+
+        BuscarAutor buscar = new BuscarAutor(menu);
+
+        buscar.setVisible(true);
+    }//GEN-LAST:event_botonBuscarAutorActionPerformed
+
+    private void botonBuscarPalabraClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPalabraClaveActionPerformed
+        this.setVisible(false);
+
+        Menu menu = new Menu();
+
+        BuscarPalabraClave buscar = new BuscarPalabraClave(menu);
+
+        buscar.setVisible(true);
+    }//GEN-LAST:event_botonBuscarPalabraClaveActionPerformed
+
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+        this.setVisible(false);
+
+        Menu menu = new Menu();
+
+        Cargar cargar = new Cargar(menu);
+
+        cargar.setVisible(true);
+    }//GEN-LAST:event_botonAgregarActionPerformed
+
+    private void botonAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnalizarActionPerformed
+        this.setVisible(false);
+
+        Menu menu = new Menu();
+
+        Analizar analizar = new Analizar(menu);
+
+        analizar.setVisible(true);
+    }//GEN-LAST:event_botonAnalizarActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +189,12 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton botonAgregar;
+    private javax.swing.JButton botonAnalizar;
+    private javax.swing.JButton botonBuscarAutor;
+    private javax.swing.JButton botonBuscarPalabraClave;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
