@@ -65,72 +65,68 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Añadir.png"))); // NOI18N
-        jPanel1.add(añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 30, 40));
+        jPanel1.add(añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 30, 40));
 
         resumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Resumen.png"))); // NOI18N
-        jPanel1.add(resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 70, 80));
+        jPanel1.add(resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 70, 80));
 
         buscarPalabraClave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarPalabraClave.png"))); // NOI18N
-        jPanel1.add(buscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 70, 80));
+        jPanel1.add(buscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 70, 80));
 
         analizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Analizar.png"))); // NOI18N
-        jPanel1.add(analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 60, 70));
+        jPanel1.add(analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 60, 70));
 
         buscarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarAutor.png"))); // NOI18N
-        jPanel1.add(buscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 70, 70));
+        jPanel1.add(buscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 60, 70));
 
         botonBuscarAutor.setBackground(new java.awt.Color(0, 0, 0));
         botonBuscarAutor.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonBuscarAutor.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscarAutor.setText("Buscar por autor");
-        botonBuscarAutor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonBuscarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarAutorActionPerformed(evt);
             }
         });
-        jPanel1.add(botonBuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 210, 70));
+        jPanel1.add(botonBuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 220, 70));
 
         botonAnalizar.setBackground(new java.awt.Color(0, 0, 0));
         botonAnalizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonAnalizar.setForeground(new java.awt.Color(255, 255, 255));
         botonAnalizar.setText("Analizar resumen");
-        botonAnalizar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonAnalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAnalizarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 230, 70));
+        jPanel1.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 220, 70));
 
         botonBuscarPalabraClave.setBackground(new java.awt.Color(0, 0, 0));
         botonBuscarPalabraClave.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonBuscarPalabraClave.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscarPalabraClave.setText("Buscar por palabra clave");
-        botonBuscarPalabraClave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonBuscarPalabraClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarPalabraClaveActionPerformed(evt);
             }
         });
-        jPanel1.add(botonBuscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 80));
+        jPanel1.add(botonBuscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 220, 70));
 
         botonAgregar.setBackground(new java.awt.Color(0, 0, 0));
         botonAgregar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         botonAgregar.setForeground(new java.awt.Color(255, 255, 255));
         botonAgregar.setText("Agregar resumen");
-        botonAgregar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 220, 80));
+        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 220, 70));
 
-        Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
+        Titulo.setFont(new java.awt.Font("Ebrima", 0, 30)); // NOI18N
         Titulo.setForeground(new java.awt.Color(255, 255, 255));
         Titulo.setText("Escoge una opción:");
-        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         botonSalir.setBackground(new java.awt.Color(0, 0, 0));
         botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -141,7 +137,7 @@ public class Menu extends javax.swing.JFrame {
                 botonSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 100, 40));
+        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 100, 40));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 480));

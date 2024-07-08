@@ -121,7 +121,7 @@ public class BuscarAutor extends javax.swing.JFrame {
                 botonSeleccionarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 120, 40));
+        jPanel1.add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 170, 40));
 
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));

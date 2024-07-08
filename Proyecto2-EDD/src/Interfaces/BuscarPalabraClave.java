@@ -117,7 +117,7 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
                 botonSeleccionarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 130, 40));
+        jPanel1.add(botonSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 160, 40));
 
         jLabel7.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
