@@ -8,14 +8,19 @@ import EDD.Hash1;
 import EDD.HashTable;
 
 /**
+ * La clase {@code Menu} representa la interfaz principal de la aplicación de
+ * gestión de resúmenes. Permite al usuario acceder a diferentes funciones como
+ * búsqueda, carga y análisis de resúmenes.
  *
  * @author Chris
  */
 public class Menu extends javax.swing.JFrame {
+
     HashTable hashtable;
     Hash1 hash;
+
     /**
-     * Creates new form Menu
+     * Crea una nueva instancia de la clase {@code Menu}.
      */
     public Menu() {
         initComponents();
@@ -34,81 +39,124 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        añadir = new javax.swing.JLabel();
+        resumen = new javax.swing.JLabel();
+        buscarPalabraClave = new javax.swing.JLabel();
+        analizar = new javax.swing.JLabel();
+        buscarAutor = new javax.swing.JLabel();
         botonBuscarAutor = new javax.swing.JButton();
         botonAnalizar = new javax.swing.JButton();
         botonBuscarPalabraClave = new javax.swing.JButton();
         botonAgregar = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         botonSalir = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Añadir.png"))); // NOI18N
+        jPanel1.add(añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 30, 40));
+
+        resumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Resumen.png"))); // NOI18N
+        jPanel1.add(resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 70, 80));
+
+        buscarPalabraClave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarPalabraClave.png"))); // NOI18N
+        jPanel1.add(buscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 70, 80));
+
+        analizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Analizar.png"))); // NOI18N
+        jPanel1.add(analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 60, 70));
+
+        buscarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BuscarAutor.png"))); // NOI18N
+        jPanel1.add(buscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 70, 70));
+
+        botonBuscarAutor.setBackground(new java.awt.Color(0, 0, 0));
         botonBuscarAutor.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonBuscarAutor.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscarAutor.setText("Buscar por autor");
+        botonBuscarAutor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonBuscarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarAutorActionPerformed(evt);
             }
         });
-        jPanel1.add(botonBuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 270, 50));
+        jPanel1.add(botonBuscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 210, 70));
 
+        botonAnalizar.setBackground(new java.awt.Color(0, 0, 0));
         botonAnalizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        botonAnalizar.setText("Analizar resúmen");
+        botonAnalizar.setForeground(new java.awt.Color(255, 255, 255));
+        botonAnalizar.setText("Analizar resumen");
+        botonAnalizar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonAnalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAnalizarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 270, 50));
+        jPanel1.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 230, 70));
 
+        botonBuscarPalabraClave.setBackground(new java.awt.Color(0, 0, 0));
         botonBuscarPalabraClave.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonBuscarPalabraClave.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscarPalabraClave.setText("Buscar por palabra clave");
+        botonBuscarPalabraClave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonBuscarPalabraClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarPalabraClaveActionPerformed(evt);
             }
         });
-        jPanel1.add(botonBuscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 270, 50));
+        jPanel1.add(botonBuscarPalabraClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 80));
 
+        botonAgregar.setBackground(new java.awt.Color(0, 0, 0));
         botonAgregar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        botonAgregar.setText("Agregar resúmen");
+        botonAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        botonAgregar.setText("Agregar resumen");
+        botonAgregar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 270, 50));
+        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 220, 80));
 
         Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(51, 51, 255));
-        Titulo.setText("Menú");
-        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setText("Escoge una opción:");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
+        botonSalir.setBackground(new java.awt.Color(0, 0, 0));
         botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonSalir.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 100, 40));
+        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 100, 40));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción realizada al presionar el botón "Buscar por Autor".
+     *
+     * @param evt el evento de acción
+     */
     private void botonBuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarAutorActionPerformed
         this.setVisible(false);
 
@@ -119,6 +167,11 @@ public class Menu extends javax.swing.JFrame {
         buscar.setVisible(true);
     }//GEN-LAST:event_botonBuscarAutorActionPerformed
 
+    /**
+     * Acción realizada al presionar el botón "Buscar por Palabra Clave".
+     *
+     * @param evt el evento de acción
+     */
     private void botonBuscarPalabraClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPalabraClaveActionPerformed
         this.setVisible(false);
 
@@ -129,6 +182,11 @@ public class Menu extends javax.swing.JFrame {
         buscar.setVisible(true);
     }//GEN-LAST:event_botonBuscarPalabraClaveActionPerformed
 
+    /**
+     * Acción realizada al presionar el botón "Agregar Resumen".
+     *
+     * @param evt el evento de acción
+     */
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         this.setVisible(false);
 
@@ -139,6 +197,11 @@ public class Menu extends javax.swing.JFrame {
         cargar.setVisible(true);
     }//GEN-LAST:event_botonAgregarActionPerformed
 
+    /**
+     * Acción realizada al presionar el botón "Analizar Resumen".
+     *
+     * @param evt el evento de acción
+     */
     private void botonAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnalizarActionPerformed
         this.setVisible(false);
 
@@ -149,6 +212,11 @@ public class Menu extends javax.swing.JFrame {
         analizar.setVisible(true);
     }//GEN-LAST:event_botonAnalizarActionPerformed
 
+    /**
+     * Acción realizada al presionar el botón "Salir".
+     *
+     * @param evt el evento de acción
+     */
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_botonSalirActionPerformed
@@ -189,12 +257,18 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo;
+    private javax.swing.JLabel analizar;
+    private javax.swing.JLabel añadir;
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAnalizar;
     private javax.swing.JButton botonBuscarAutor;
     private javax.swing.JButton botonBuscarPalabraClave;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JLabel buscarAutor;
+    private javax.swing.JLabel buscarPalabraClave;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel resumen;
     // End of variables declaration//GEN-END:variables
 }

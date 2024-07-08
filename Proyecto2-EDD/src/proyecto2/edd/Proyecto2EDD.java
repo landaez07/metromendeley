@@ -21,7 +21,7 @@ public class Proyecto2EDD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String[] filePath = {"C:\\ruta\\al\\archivo.txt"}; // Aqui ponen las direcciones de los archivos
+        String[] filePath = {"C:\\ruta\\al\\archivo.txt"}; 
         HashTable hashtable = new HashTable(filePath.length *2);
         Hash1 hash = new Hash1(filePath.length *2);
 

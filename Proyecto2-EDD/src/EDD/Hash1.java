@@ -5,13 +5,22 @@
 package EDD;
 
 /**
- *
- * @author pedro
+ * La clase {@code Hash1} representa una tabla hash que almacena listas de objetos de la clase {@code Resumenes}.
+ * Permite insertar y comprobar resúmenes basados en sus claves.
+ * Utiliza una técnica de manejo de colisiones mediante encadenamiento.
+ * 
+ * @autor Pedro
  */
 public class Hash1 {
     Lista[] lista;
     int tamano;
     int agregados;
+
+    /**
+     * Crea una nueva instancia de la clase {@code Hash1} con un tamaño especificado.
+     * 
+     * @param tamano el tamaño inicial de la tabla hash
+     */
     public Hash1(int tamano){
         this.tamano = tamano;
         this.lista = new Lista[this.tamano];
@@ -21,14 +30,25 @@ public class Hash1 {
         this.agregados = 0;
     }
     
+    /**
+     * Calcula el índice hash para una clave dada.
+     * 
+     * @param clave la clave del resumen
+     * @return el índice hash correspondiente
+     */
     public int hash(String clave){
         int indice = 0;
         for (int i = 0; i < clave.length(); i++) {
             indice += Character.valueOf(clave.charAt(i)) * i;
         }
-        return indice%this.tamano;
+        return indice % this.tamano;
     }
     
+    /**
+     * Inserta un nuevo resumen en la tabla hash.
+     * 
+     * @param resumen el resumen a insertar
+     */
     public void insertar(Resumenes resumen){
         int indice = this.hash(resumen.getClaves());
         Lista listas2 = this.comprobacion(resumen.getClaves());
@@ -55,39 +75,40 @@ public class Hash1 {
             }
             this.lista[indice] = new Lista();
             this.lista[indice].insertar(resumen);
-        }else{
+        } else {
             this.lista[indice] = new Lista();
             this.lista[indice].insertar(resumen);
- 
         }
-        this.agregados +=1;
+        this.agregados += 1;
     }
     
-    public Lista comprobacion( String clave){    //colisiones de las claves
+    /**
+     * Comprueba si una clave dada ya está presente en la tabla hash.
+     * 
+     * @param clave la clave del resumen
+     * @return la lista de resúmenes correspondiente a la clave encontrada, o {@code null} si no se encuentra
+     */
+    public Lista comprobacion(String clave){
         int indice = this.hash(clave);
-        if( this.lista[indice] == null){
+        if (this.lista[indice] == null) {
             return null;
         }
-        if (this.lista[indice].getPrimero().getResumen().getClaves().contains(clave)){
+        if (this.lista[indice].getPrimero().getResumen().getClaves().contains(clave)) {
             return this.lista[indice];
         } else {
-            indice +=1;
+            indice += 1;
             int contador = 0;
-            while (this.lista[indice].getPrimero().getResumen().getClaves().contains(clave) && contador != this.tamano){
+            while (this.lista[indice].getPrimero().getResumen().getClaves().contains(clave) && contador != this.tamano) {
                 indice += 1;
                 contador += 1;
-                if (indice == tamano){
+                if (indice == tamano) {
                     indice = 0;
                 }
             }
-            if (contador == this.tamano){
+            if (contador == this.tamano) {
                 return null;
             }
             return this.lista[indice];
-            
         }
     }
-    
-
-    
 }
