@@ -5,13 +5,15 @@
 package Interfaces;
 
 /**
+ * La clase {@code Bienvenida} proporciona una interfaz gráfica de bienvenida.
+ * Permite al usuario continuar al menú principal de la aplicación.
  *
- * @author Chris
+ * @autor Chris
  */
 public class Bienvenida extends javax.swing.JFrame {
 
     /**
-     * Creates new form Bienvenida
+     * Crea una nueva instancia de la clase {@code Bienvenida}.
      */
     public Bienvenida() {
         initComponents();
@@ -29,35 +31,68 @@ public class Bienvenida extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        buscarAutor = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         botonSig = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        buscarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Documentos.png"))); // NOI18N
+        jPanel1.add(buscarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 70, 70));
+
+        jLabel7.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Este programa analiza de manera exhaustiva cualquier archivo");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 540, 30));
+
+        jLabel8.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("de texto que le introduzcas. Desde analizar por autor hasta");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 490, 30));
+
+        jLabel9.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("encontrar la frecuencia en que aparece una palabra.");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 440, 30));
+
+        botonSig.setBackground(new java.awt.Color(0, 0, 0));
+        botonSig.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonSig.setForeground(new java.awt.Color(255, 255, 255));
         botonSig.setText("Siguiente");
         botonSig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSigActionPerformed(evt);
             }
         });
-        jPanel1.add(botonSig, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 100, 50));
+        jPanel1.add(botonSig, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 130, 50));
 
-        Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(51, 51, 255));
-        Titulo.setText("Bienvenido");
-        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+        Titulo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 30)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setText("Metro Mendeley");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 480));
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 310));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción realizada al presionar el botón "Siguiente".
+     *
+     * @param evt el evento de acción
+     */
     private void botonSigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSigActionPerformed
         this.setVisible(false);
-
 
         Menu menu = new Menu();
 
@@ -101,8 +136,13 @@ public class Bienvenida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton botonSig;
+    private javax.swing.JLabel buscarAutor;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

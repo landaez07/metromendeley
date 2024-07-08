@@ -4,16 +4,29 @@
  */
 package Interfaces;
 
+import EDD.Resumenes;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
- *
- * @author Chris
+ * La clase {@code Cargar} proporciona una interfaz gráfica para cargar resúmenes desde archivos de texto.
+ * Permite al usuario seleccionar un archivo de texto y cargar su contenido en la tabla hash.
+ * 
+ * @autor Chris
  */
 public class Cargar extends javax.swing.JFrame {
 
-            public static Menu v1;
-    
+    public static Menu v1;
+
+
     /**
-     * Creates new form Cargar
+     * Crea una nueva instancia de la clase {@code Cargar}.
+     * 
+     * @param v1 instancia del menú principal.
      */
     public Cargar(Menu v1) {
         initComponents();
@@ -33,27 +46,52 @@ public class Cargar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        añadir = new javax.swing.JLabel();
+        resumen = new javax.swing.JLabel();
         botonAtras = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
+        botonAgregar = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Añadir.png"))); // NOI18N
+        jPanel1.add(añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 30, 40));
+
+        resumen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Resumen.png"))); // NOI18N
+        jPanel1.add(resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 70, 80));
+
+        botonAtras.setBackground(new java.awt.Color(0, 0, 0));
         botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonAtras.setForeground(new java.awt.Color(255, 255, 255));
         botonAtras.setText("Atrás");
-        botonAtras.setActionCommand("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 90, 40));
+        jPanel1.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 90, 40));
 
         Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(51, 51, 255));
-        Titulo.setText("Agregar resúmen:");
-        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setText("Agregar resumen:");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+
+        botonAgregar.setBackground(new java.awt.Color(0, 0, 0));
+        botonAgregar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        botonAgregar.setText("Agregar");
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 100, 50));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,14 +103,18 @@ public class Cargar extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /**
+     * Crea una nueva instancia de la clase {@code Cargar}.
+     * 
+     * @param v1 instancia del menú principal.
+     */
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         this.setVisible(false);
 
@@ -80,6 +122,67 @@ public class Cargar extends javax.swing.JFrame {
 
         menu.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+        /**
+     * Acción realizada al presionar el botón "Agregar".
+     * 
+     * @param evt el evento de acción
+     */
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+        // TODO add your handling code here:
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto", "txt");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        File ruta = new File("e:/carpeta/");
+        fileChooser.setCurrentDirectory(ruta);
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            String dir = String.valueOf(file).replace("\\", "//");
+//            arch = dir;
+            String linea;
+            String datos_txt = "";
+            String path = dir;
+            String titulo = "";
+            String autores = "";
+            String resumen = "";
+            String palabras = "";
+            int estado = 1;
+            try {
+                if (!file.exists()) {
+                    file.createNewFile();
+                } else {
+                    FileReader fr = new FileReader(file);
+                    BufferedReader br = new BufferedReader(fr);
+                    while ((linea = br.readLine()) != null) {
+                        if (!linea.isEmpty()) {
+                            if (linea.equals("Autores")) {
+                                estado = 2;
+                            } else if (linea.equals("Resumen")) {
+                                estado = 3;
+                            } else if (linea.toLowerCase().contains("palabras clave:")) {
+                                palabras += linea.toLowerCase().replace("palabras clave:", "");
+                            } else if (estado == 1) {
+                                titulo += linea;
+                            } else if (estado == 2) {
+                                autores += linea + "\n";
+                            } else if (estado == 3) {
+                                resumen += linea + " ";
+                            }
+                        }
+                    }
+                    Resumenes art = new Resumenes(titulo, autores, resumen, palabras);
+                    this.v1.hashtable.insertar(art);
+
+                    this.v1.hash.insertar(art);
+                    br.close();
+                    JOptionPane.showMessageDialog(null, "Resumen agregado con éxito.");
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+    }//GEN-LAST:event_botonAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,8 +220,12 @@ public class Cargar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo;
+    private javax.swing.JLabel añadir;
+    private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAtras;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel resumen;
     // End of variables declaration//GEN-END:variables
 }

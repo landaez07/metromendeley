@@ -4,15 +4,26 @@
  */
 package Interfaces;
 
+import EDD.HashTable;
+import java.awt.List;
+import javax.swing.ListModel;
+
 /**
+ * La clase {@code Analizar} proporciona una interfaz gráfica para analizar
+ * resúmenes almacenados en un hash table. Permite seleccionar un resumen por
+ * título y mostrar su análisis.
  *
- * @author Chris
+ * @autor Chris
  */
 public class Analizar extends javax.swing.JFrame {
 
-        public static Menu v1;
+    public static Menu v1;
+
     /**
-     * Creates new form Analizar
+     * Crea una nueva instancia de la clase {@code Analizar}.
+     *
+     * @param v1 el objeto de la clase {@code Menu} que contiene los datos
+     * necesarios para el análisis
      */
     public Analizar(Menu v1) {
         initComponents();
@@ -20,6 +31,14 @@ public class Analizar extends javax.swing.JFrame {
         v1.setVisible(false);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        HashTable hash = v1.hashtable;
+        for (int i = 0; i < hash.tamano; i++) {
+            try {
+                this.jComboBox1.addItem(hash.resumenes[i].titulo);
+            } catch (Exception e) {
+                // Manejo de excepción si es necesario
+            }
+        }
     }
 
     /**
@@ -32,63 +51,76 @@ public class Analizar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        analizar = new javax.swing.JLabel();
         botonAtras = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         botonAnalizar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        analizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Analizar.png"))); // NOI18N
+        jPanel2.add(analizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 60, 70));
+
+        botonAtras.setBackground(new java.awt.Color(0, 0, 0));
         botonAtras.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonAtras.setForeground(new java.awt.Color(255, 255, 255));
         botonAtras.setText("Atrás");
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAtrasActionPerformed(evt);
             }
         });
-        jPanel2.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 90, 40));
+        jPanel2.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 90, 40));
 
         Titulo.setFont(new java.awt.Font("Arial Black", 0, 30)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(51, 51, 255));
-        Titulo.setText("Analizar resúmen:");
-        jPanel2.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setText("Analizar resumen:");
+        jPanel2.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 340, 280));
 
         jLabel4.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Análisis:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 80, 30));
 
         jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Investigaciones guardadas:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 230, 30));
 
-        jList1.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 230, 130));
-
+        botonAnalizar.setBackground(new java.awt.Color(0, 0, 0));
         botonAnalizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        botonAnalizar.setForeground(new java.awt.Color(255, 255, 255));
         botonAnalizar.setText("Analizar");
-        jPanel2.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 100, 30));
+        botonAnalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAnalizarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 100, 30));
+
+        jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 230, 40));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jPanel2.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,12 +130,17 @@ public class Analizar extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción realizada al presionar el botón "Atras".
+     *
+     * @param evt el evento de acción
+     */
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         this.setVisible(false);
 
@@ -111,6 +148,22 @@ public class Analizar extends javax.swing.JFrame {
 
         menu.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    /**
+     * Acción realizada al presionar el botón "Analizar".
+     *
+     * @param evt el evento de acción
+     */
+    private void botonAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnalizarActionPerformed
+        // TODO add your handling code here:
+        HashTable hash = v1.hashtable;
+        String titulo = this.jComboBox1.getSelectedItem().toString();
+        try {
+            this.jTextArea1.setText(hash.analizar(titulo));
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_botonAnalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,15 +201,16 @@ public class Analizar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo;
+    private javax.swing.JLabel analizar;
     private javax.swing.JButton botonAnalizar;
     private javax.swing.JButton botonAtras;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
