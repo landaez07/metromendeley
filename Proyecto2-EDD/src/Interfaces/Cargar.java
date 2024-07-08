@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import EDD.LectorDeTxt;
 import EDD.Resumenes;
 import java.io.BufferedReader;
 import java.io.File;
@@ -130,58 +131,8 @@ public class Cargar extends javax.swing.JFrame {
      */
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         // TODO add your handling code here:
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto", "txt");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(filter);
-        File ruta = new File("e:/carpeta/");
-        fileChooser.setCurrentDirectory(ruta);
-        int result = fileChooser.showOpenDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-            String dir = String.valueOf(file).replace("\\", "//");
-//            arch = dir;
-            String linea;
-            String datos_txt = "";
-            String path = dir;
-            String titulo = "";
-            String autores = "";
-            String resumen = "";
-            String palabras = "";
-            int estado = 1;
-            try {
-                if (!file.exists()) {
-                    file.createNewFile();
-                } else {
-                    FileReader fr = new FileReader(file);
-                    BufferedReader br = new BufferedReader(fr);
-                    while ((linea = br.readLine()) != null) {
-                        if (!linea.isEmpty()) {
-                            if (linea.equals("Autores")) {
-                                estado = 2;
-                            } else if (linea.equals("Resumen")) {
-                                estado = 3;
-                            } else if (linea.toLowerCase().contains("palabras clave:")) {
-                                palabras += linea.toLowerCase().replace("palabras clave:", "");
-                            } else if (estado == 1) {
-                                titulo += linea;
-                            } else if (estado == 2) {
-                                autores += linea + "\n";
-                            } else if (estado == 3) {
-                                resumen += linea + " ";
-                            }
-                        }
-                    }
-                    Resumenes art = new Resumenes(titulo, autores, resumen, palabras);
-                    this.v1.hashtable.insertar(art);
-
-                    this.v1.hash.insertar(art);
-                    br.close();
-                    JOptionPane.showMessageDialog(null, "Resumen agregado con éxito.");
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
-        }
+        LectorDeTxt l = new LectorDeTxt(v1.hashtable, v1.hash);
+        l.leerResumen(l.buscarTXT());
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     /**

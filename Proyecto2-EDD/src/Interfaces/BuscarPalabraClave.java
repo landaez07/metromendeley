@@ -125,7 +125,6 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 260, 30));
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -175,15 +174,20 @@ public class BuscarPalabraClave extends javax.swing.JFrame {
      */
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
-        String palabra = this.palabra.getText();
-        Lista lista = this.v1.hash.comprobacion(palabra);
-        String[] titulos = lista.imprimir().split("\n");
-        for (int i = 0; i < titulos.length; i++) {
-            try {
-                this.jComboBox2.addItem(titulos[i]);
-            } catch (Exception e) {
+        try {
+            String palabra = this.palabra.getText().toLowerCase();
+            Lista lista = this.v1.hash.comprobacion(palabra);
+            String[] titulos = lista.imprimir().split("\n");
+            this.jComboBox2.removeAllItems();
+            for (int i = 0; i < titulos.length; i++) {
+                try {
+                    this.jComboBox2.addItem(titulos[i]);
+                } catch (Exception e) {
 
+                }
             }
+        } catch (Exception r) {
+
         }
     }//GEN-LAST:event_botonBuscarActionPerformed
 

@@ -6,6 +6,7 @@ package Interfaces;
 
 import EDD.Hash1;
 import EDD.HashTable;
+import EDD.LectorDeTxt;
 
 /**
  * La clase {@code Menu} representa la interfaz principal de la aplicación de
@@ -24,7 +25,14 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        this.setVisible(false);
+        this.hashtable = new HashTable(30);
+        this.hash = new Hash1(120);
+        LectorDeTxt lector = new LectorDeTxt(this.hashtable, this.hash);
+        String[] archivos = {"archivo1.txt", "archivo2.txt", "archivo3.txt", "archivo4.txt"};
+        for (int i = 0; i < archivos.length; i++) {
+            lector.leerResumen(archivos[i]);
+        }
+        this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }

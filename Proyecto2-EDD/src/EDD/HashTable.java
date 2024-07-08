@@ -50,8 +50,8 @@ public class HashTable {
      * @param resumen el resumen a insertar
      */
     public void insertar(Resumenes resumen){
-        int indice = this.hash(resumen.getTitulo());
-        if (this.comprobacion(resumen.titulo) != null){
+        int indice = this.hash(resumen.getTitulo().toLowerCase());
+        if (this.comprobacion(resumen.titulo.toLowerCase()) != null){
             System.out.println("El resumen ya se encuentra en el sistema");
             return;
         }
@@ -89,12 +89,12 @@ public class HashTable {
         if (this.resumenes[indice] == null) {
             return null;
         }
-        if (this.resumenes[indice].getTitulo().equals(titulo)) {
+        if (this.resumenes[indice].getTitulo().toLowerCase().equals(titulo)) {
             return this.resumenes[indice];
         } else {
             indice += 1;
             int contador = 0;
-            while (!this.resumenes[indice].getTitulo().equals(titulo) && contador != this.tamano) {
+            while (this.resumenes[indice] != null && !this.resumenes[indice].getTitulo().toLowerCase().equals(titulo) && contador != this.tamano) {
                 indice += 1;
                 contador += 1;
                 if (indice == tamano) {
@@ -116,11 +116,11 @@ public class HashTable {
      */
     public Resumenes buscar(String titulo){
         int indice = this.hash(titulo);
-        if (this.resumenes[indice].titulo.equals(titulo)) {
+        if (this.resumenes[indice].titulo.toLowerCase().equals(titulo)) {
             return this.resumenes[indice];
         } else {
             indice += 1;
-            while (!this.resumenes[indice].titulo.equals(titulo)) {
+            while (!this.resumenes[indice].titulo.toLowerCase().equals(titulo)) {
                 indice += 1;
                 if (indice == tamano) {
                     indice = 0;
@@ -137,11 +137,11 @@ public class HashTable {
      * @return un string con el análisis del resumen
      */
     public String analizar(String titulo){
-        Resumenes resumen = this.buscar(titulo);
+        Resumenes resumen = this.buscar(titulo.toLowerCase());
         String Autor = resumen.autores;
-        String cuerpo = resumen.getCuerpo();
+        String cuerpo = resumen.getCuerpo().toLowerCase();
         String respuesta = titulo + "\n" + Autor + "\n";
-        String[] palabras = resumen.getClaves().split(",");
+        String[] palabras = resumen.getClaves().toLowerCase().split(",");
         for (int i = 0; i < palabras.length; i++) {
             int aux = 0;
             int contador = 0;
@@ -171,7 +171,7 @@ public class HashTable {
     public String busqueda_autores(String autor){
         Lista lis1 = new Lista();
         for (int i = 0; i < this.tamano; i++) {
-            if (this.resumenes[i].getAutores().contains(autor)) {
+            if (this.resumenes[i] != null && this.resumenes[i].getAutores().toLowerCase().contains(autor.toLowerCase())) {
                 lis1.insertar(this.resumenes[i]);
             }
         }

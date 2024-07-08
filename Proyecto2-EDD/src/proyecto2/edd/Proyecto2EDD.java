@@ -4,94 +4,16 @@
  */
 package proyecto2.edd;
 
-import EDD.HashTable;
-import EDD.Resumenes;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import Interfaces.Bienvenida;
 
-public class Lector {
 
-    public HashTable titulos;
-    public HashTable autores;
-    public HashTable palabras;
+public class Proyecto2EDD {
+    public static void main(String[] args) {
+        
+        Bienvenida bienvenida = new Bienvenida();
+        bienvenida.setVisible(true);
 
-    public Lector(HashTable titulos, HashTable autores, HashTable palabras) {
-        this.titulos = titulos;
-        this.autores = autores;
-        this.palabras = palabras;
+        
     }
-
-    public void leerResumen(String path) {
-        String linea;
-        String title = "";
-        String autors = "";
-        String summary = "";
-        String keys = "";
-        int lecture_mode = 1;
-        try {
-            FileReader fr = new FileReader(path);
-            BufferedReader br = new BufferedReader(fr);
-            while ((linea = br.readLine()) != null) {
-                if (!linea.isEmpty()) {
-                    if (linea.toLowerCase().equals("autores")) {
-                        lecture_mode = 2;
-                    } else if (linea.toLowerCase().equals("resumen")) {
-                        lecture_mode = 3;
-                    } else if (linea.toLowerCase().contains("palabras claves: ")) {
-                        if (String.valueOf(linea.charAt(linea.length() - 1)).equals(".") || String.valueOf(linea.charAt(linea.length() - 1)).equals(".")) {
-                            keys += linea.toLowerCase().replace("palabras claves: ", "").replaceAll(".$", "");
-                        } else {
-                            keys += linea.toLowerCase().replace("palabras claves: ", "");
-                        }
-                    } else if (lecture_mode == 1) {
-                        title += linea;
-                    } else if (lecture_mode == 2) {
-                        autors += linea.replace("-", " ") + ";";
-                    } else if (lecture_mode == 3) {
-                        summary += linea + " ";
-                    }
-                }
-            }
-
-            this.titulos.insertar(title, autors, summary, keys, title);
-            autors = autors.replaceAll(".$", "");
-            String[] a = autors.split(";");
-
-
-            for (int i = 0; i < a.length; i++) {
-                this.autores.insertar(title, autors, keys, linea, a[i]);
-            }
-
-            String[] b = keys.split(", ");
-
-            for (int i = 0; i < b.length; i++) {
-                this.palabras.insertar(title, autors, keys, linea, b[i]);
-            }
-
-            br.close();
-
-        } catch (Exception ex) {
-
-            ex.printStackTrace();
-        }
-
-    }
-
-    public String buscarTXT() {
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto", "txt");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(filter);
-        File ruta = new File("e:/carpeta/");
-        fileChooser.setCurrentDirectory(ruta);
-        int result = fileChooser.showOpenDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-            String dir = String.valueOf(file).replace("\\", "//");
-            return dir;
-        }
-        return "";
-    }
+    
 }

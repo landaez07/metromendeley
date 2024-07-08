@@ -26,6 +26,29 @@ public class BuscarAutor extends javax.swing.JFrame {
         v1.setVisible(false);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        String aux = "";
+        System.out.println(v1.hashtable.tamano);
+        for (int i = 0; i < v1.hashtable.tamano; i++) {
+            try {
+//                System.out.println("a");
+                String[] autores = v1.hashtable.resumenes[i].autores.split(";");
+                System.out.println(autores.length);
+                for (int j = 0; j < autores.length; j++) {
+                    System.out.println(autores[j]);
+                    if (!aux.contains(autores[j])) {
+                        aux += autores[j] + ";";
+                    }
+                }
+
+            } catch (Exception e) {
+            }
+        }
+        aux = aux.replaceAll(".$", "");
+        String [] autores = aux.split(";");
+        for (int j = 0; j < autores.length; j++) {
+            this.jComboBox1.addItem(autores[j]);
+        }
+
     }
 
     /**
@@ -82,7 +105,6 @@ public class BuscarAutor extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -121,7 +143,6 @@ public class BuscarAutor extends javax.swing.JFrame {
         jComboBox2.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -167,6 +188,7 @@ public class BuscarAutor extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
 
         String[] autores = v1.hashtable.busqueda_autores(this.jComboBox1.getSelectedItem().toString()).split("\n");
+        this.jComboBox2.removeAllItems();
         for (int i = 0; i < autores.length; i++) {
             try {
                 this.jComboBox2.addItem(autores[i]);
