@@ -4,61 +4,94 @@
  */
 package proyecto2.edd;
 
-import EDD.Hash1;
 import EDD.HashTable;
 import EDD.Resumenes;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author Chris
- */
-public class Proyecto2EDD {
+public class Lector {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        String[] filePath = {"C:\\ruta\\al\\archivo.txt"}; 
-        HashTable hashtable = new HashTable(filePath.length *2);
-        Hash1 hash = new Hash1(filePath.length *2);
+    public HashTable titulos;
+    public HashTable autores;
+    public HashTable palabras;
 
-        for (int i = 0; i < filePath.length; i++) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePath[i]))) {
-                String line;
-                String titulo = "";
-                String autores = "";
-                String resumen = "";
-                String palabras = "";
-                int estado = 1;
-                while ((line = reader.readLine()) != null) {
-                    if (!line.isEmpty()) {
-                        if (line.equals("Autores")) {
-                            estado = 2;
-                        } else if (line.equals("Resumen")) {
-                            estado = 3;
-                        } else if (line.toLowerCase().contains("palabras clave:")) {
-                            palabras += line.toLowerCase().replace("palabras clave:", "");
-                        }else if(estado == 1){
-                            titulo += line;
-                        }else if(estado == 2){
-                            autores += line + "\n";
-                        }else if(estado == 3){
-                            resumen += line + " ";
+    public Lector(HashTable titulos, HashTable autores, HashTable palabras) {
+        this.titulos = titulos;
+        this.autores = autores;
+        this.palabras = palabras;
+    }
+
+    public void leerResumen(String path) {
+        String linea;
+        String title = "";
+        String autors = "";
+        String summary = "";
+        String keys = "";
+        int lecture_mode = 1;
+        try {
+            FileReader fr = new FileReader(path);
+            BufferedReader br = new BufferedReader(fr);
+            while ((linea = br.readLine()) != null) {
+                if (!linea.isEmpty()) {
+                    if (linea.toLowerCase().equals("autores")) {
+                        lecture_mode = 2;
+                    } else if (linea.toLowerCase().equals("resumen")) {
+                        lecture_mode = 3;
+                    } else if (linea.toLowerCase().contains("palabras claves: ")) {
+                        if (String.valueOf(linea.charAt(linea.length() - 1)).equals(".") || String.valueOf(linea.charAt(linea.length() - 1)).equals(".")) {
+                            keys += linea.toLowerCase().replace("palabras claves: ", "").replaceAll(".$", "");
+                        } else {
+                            keys += linea.toLowerCase().replace("palabras claves: ", "");
                         }
+                    } else if (lecture_mode == 1) {
+                        title += linea;
+                    } else if (lecture_mode == 2) {
+                        autors += linea.replace("-", " ") + ";";
+                    } else if (lecture_mode == 3) {
+                        summary += linea + " ";
                     }
                 }
-                Resumenes art = new Resumenes(titulo, autores, resumen, palabras);
-                hashtable.insertar(art);
+            }
 
-                hash.insertar(art);
+            this.titulos.insertar(title, autors, summary, keys, title);
+            autors = autors.replaceAll(".$", "");
+            String[] a = autors.split(";");
+
+
+            for (int i = 0; i < a.length; i++) {
+                this.autores.insertar(title, autors, keys, linea, a[i]);
             }
-        catch (IOException e) {
-                System.err.println("Error leyendo el archivo: " + e.getMessage());
+
+            String[] b = keys.split(", ");
+
+            for (int i = 0; i < b.length; i++) {
+                this.palabras.insertar(title, autors, keys, linea, b[i]);
             }
+
+            br.close();
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+
     }
-}
 
+    public String buscarTXT() {
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto", "txt");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        File ruta = new File("e:/carpeta/");
+        fileChooser.setCurrentDirectory(ruta);
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            String dir = String.valueOf(file).replace("\\", "//");
+            return dir;
+        }
+        return "";
+    }
 }
